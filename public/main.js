@@ -9,13 +9,26 @@
 // Polyfill in Firefox.
 // See https://blog.mozilla.org/webrtc/getdisplaymedia-now-available-in-adapter-js/
 
-/* if (adapter.browserDetails.browser == "firefox") {
+if (adapter.browserDetails.browser == "firefox") {
   adapter.browserShim.shimGetDisplayMedia(window, "screen");
+}
+
+const video = document.querySelector("video");
+
+if (video.srcObject == null) {
+  myPeer.on("call", (call) => {
+    call.on("stream", (userVideoStream) => {
+      video.srcObject = userVideoStream;
+    });
+  });
+  video.addEventListener("loadedmetadata", () => {
+    video.play();
+  });
+  startButton.disabled = true;
 }
 
 function handleSuccess(stream) {
   startButton.disabled = true;
-  const video = document.querySelector("video");
   video.srcObject = stream;
 
   // Demonstrates how to detect that the user has stopped
@@ -51,4 +64,3 @@ if (navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices) {
 } else {
   errorMsg("getDisplayMedia is not supported");
 }
- */
