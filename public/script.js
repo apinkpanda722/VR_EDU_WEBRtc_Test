@@ -18,7 +18,7 @@ const videoGrid = document.getElementById("video-grid");
 const myPeer = new Peer();
 const myVideo = document.createElement("video");
 myVideo.muted = true;
-const peers = {};
+/* const peers = {};
 navigator.mediaDevices
   .getUserMedia({
     video: true,
@@ -67,7 +67,7 @@ function addVideoStream(video, stream) {
   });
   videoGrid.append(video);
 }
-
+ */
 /***** Sharing Display Part *****/
 
 if (adapter.browserDetails.browser == "firefox") {
