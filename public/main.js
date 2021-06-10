@@ -9,7 +9,7 @@
 // Polyfill in Firefox.
 // See https://blog.mozilla.org/webrtc/getdisplaymedia-now-available-in-adapter-js/
 
-if (adapter.browserDetails.browser == "firefox") {
+/* if (adapter.browserDetails.browser == "firefox") {
   adapter.browserShim.shimGetDisplayMedia(window, "screen");
 }
 
@@ -47,6 +47,8 @@ startButton.addEventListener("click", () => {
 
 if (navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices) {
   startButton.disabled = false;
+  stop;
 } else {
   errorMsg("getDisplayMedia is not supported");
 }
+ */
