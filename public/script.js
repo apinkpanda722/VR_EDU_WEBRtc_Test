@@ -18,8 +18,8 @@ const videoGrid = document.getElementById("video-grid");
 const myPeer = new Peer();
 const myVideo = document.createElement("video");
 myVideo.muted = true;
-/* const peers = {};
-navigator.mediaDevices
+const peers = {};
+/* navigator.mediaDevices
   .getUserMedia({
     video: true,
     audio: true,
@@ -37,8 +37,8 @@ navigator.mediaDevices
     socket.on("user-connected", (userId) => {
       connectToNewUser(userId, stream);
     }); // 내가 call을 보내는 것 => 즉 내 stream을 상대방에게 보내는 것
-  });
- */
+  }); */
+
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
 });
@@ -104,8 +104,10 @@ function sharingNewUser(userId, stream) {
     addVideoStream(video, userVideoStream);
   });
   call.on("close", () => {
-    video.srcObject = "";
+    video.srcObject = null;
   });
+
+  peers[userId] = call;
 }
 
 function handleError(error) {
