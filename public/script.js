@@ -38,7 +38,7 @@ navigator.mediaDevices
       connectToNewUser(userId, stream);
     }); // 내가 call을 보내는 것 => 즉 내 stream을 상대방에게 보내는 것
   });
-
+ */
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
 });
@@ -67,7 +67,7 @@ function addVideoStream(video, stream) {
   });
   videoGrid.append(video);
 }
- */
+
 /***** Sharing Display Part *****/
 
 if (adapter.browserDetails.browser == "firefox") {
