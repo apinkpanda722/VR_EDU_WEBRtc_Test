@@ -77,7 +77,7 @@ if (adapter.browserDetails.browser == "firefox") {
 function handleSuccess(stream) {
   startButton.disabled = true;
   const video = document.querySelector("video");
-  video.srcObject = stream;
+  /* video.srcObject = stream; */
 
   myPeer.on("call", (call) => {
     call.answer(stream);
