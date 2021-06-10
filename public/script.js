@@ -82,11 +82,7 @@ function handleSuccess(stream) {
   myPeer.on("call", (call) => {
     call.answer(stream);
     call.on("stream", (userVideoStream) => {
-      if (srcObject in video) {
-        video.srcObject = null;
-      } else {
-        video.srcObject = userVideoStream;
-      }
+      video.srcObject = userVideoStream;
     });
   });
   socket.on("user-connected", (userId) => {
