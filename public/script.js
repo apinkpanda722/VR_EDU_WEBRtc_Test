@@ -1,13 +1,11 @@
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
-/* const myPeer = new Peer(undefined, {
-  host: "/",
-  port: "3001",
-}); */
+const displayGrid = document.getElementById("display-grid");
 const myPeer = new Peer();
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 const peers = {};
+const peers2 = {};
 navigator.mediaDevices
   .getUserMedia({
     video: true,
@@ -17,7 +15,7 @@ navigator.mediaDevices
     addVideoStream(myVideo, stream); // 이건 내 stream을 내 화면에 표시
 
     myPeer.on("call", (call) => {
-      call.answer(stream); // call에 내 stream으로 대답
+      call.answer(stream); // call에는 자기의 stream으로 대답
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
         addVideoStream(video, userVideoStream);
@@ -39,7 +37,7 @@ myPeer.on("open", (id) => {
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream);
   const video = document.createElement("video");
-  call.on("stream", (userVideoStream) => {
+  call.on("videostream", (userVideoStream) => {
     addVideoStream(video, userVideoStream);
   });
   call.on("close", () => {
@@ -56,5 +54,3 @@ function addVideoStream(video, stream) {
   });
   videoGrid.append(video);
 }
-
-/***** Sharing Display Part *****/

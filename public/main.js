@@ -13,20 +13,6 @@ if (adapter.browserDetails.browser == "firefox") {
   adapter.browserShim.shimGetDisplayMedia(window, "screen");
 }
 
-const video = document.querySelector("video");
-
-/* if (video.srcObject == null) {
-  myPeer.on("call", (call) => {
-    call.on("stream", (userVideoStream) => {
-      video.srcObject = userVideoStream;
-    });
-  });
-  video.addEventListener("loadedmetadata", () => {
-    video.play();
-  });
-  startButton.disabled = true;
-} */
-
 function handleSuccess(stream) {
   startButton.disabled = true;
   video.srcObject = stream;
