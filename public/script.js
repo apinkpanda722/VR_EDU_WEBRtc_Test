@@ -1,11 +1,10 @@
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
-const displayGrid = document.getElementById("display-grid");
 const myPeer = new Peer();
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 const peers = {};
-const peers2 = {};
+
 navigator.mediaDevices
   .getUserMedia({
     video: true,
