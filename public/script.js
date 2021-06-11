@@ -1,4 +1,4 @@
-const socket = io("/");
+const socket = io("/", { transports: ["polling"] });
 const videoGrid = document.getElementById("video-grid");
 const myPeer = new Peer();
 const myVideo = document.createElement("video");
