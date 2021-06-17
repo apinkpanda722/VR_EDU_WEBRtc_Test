@@ -15,6 +15,7 @@ if (adapter.browserDetails.browser == "firefox") {
 
 function handleSuccess(stream) {
   startButton.disabled = true;
+  const video = document.querySelector("video");
   video.srcObject = stream;
 
   // Demonstrates how to detect that the user has stopped
